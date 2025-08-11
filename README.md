@@ -1,62 +1,59 @@
-# Solana Validator Performance Autotuner
+# Solana Config Advisor & RPC Doctor (Hosted)
+
+A hosted ReactJS web application on a custom domain that helps Solana validator operators and developers:
+
+- **Config Advisor**: Generate a tuned validator configuration based on your intended hardware, with clear explanations for each setting.  
+- **RPC Doctor**: Run quick, controlled performance tests on user-supplied RPC endpoints and view clear, exportable reports.
+
+---
 
 ## Problem Statement
-Running a Solana validator is resource-intensive and expensive, requiring high-end hardware such as fast NVMe solid-state drives, large amounts of RAM, and powerful central processing units.  
-Despite this, most validator operators rely on guesswork when tuning performance-related configurations, such as:
-
-- Account index memory limits
-- Snapshot intervals
-- Ledger compaction schedules
-- Thread and leader scheduling parameters
-- Disk and RAM trade-offs
-
-Poor configuration choices can lead to missed slots, increased skipped rates, wasted resources, and ultimately reduced rewards.  
-At present, there is no ready-to-use system that automates the process of tuning and optimising validator performance.
+Validator configuration tuning is often guesswork, leading to wasted resources and reduced performance. RPC endpoints vary widely in reliability, but existing tools are either server-heavy or difficult to use. This project provides an accessible, hosted solution with clear recommendations and light-touch benchmarking.
 
 ---
 
-## Project Goal
-To design and implement a self-optimising system that:
-1. Deploys a Solana validator node to the testnet using Infrastructure-as-Code.
-2. Automates configuration testing by varying performance-related parameters.
-3. Monitors and collects both blockchain-level and system-level performance metrics.
-4. Analyses results to determine the most efficient configuration for a given hardware profile.
-5. Produces recommendations and a downloadable, ready-to-use configuration file.
+## Features
+- Input your hardware profile and receive an optimised validator config file.
+- Explanations for all major configuration choices.
+- Test RPC endpoints directly from the site (p50/p95 latency, success rate, errors).
+- Export results in JSON or PDF.
+- Save and compare hardware profiles and endpoint reports.
 
 ---
 
-## Planned Implementation
-
-### For the User:
-- Deploy a Solana validator on the testnet with preconfigured Infrastructure-as-Code scripts.
-- Start the autotuning process — the system will:
-  - Apply a range of tested configuration profiles.
-  - Monitor real-time performance through an integrated dashboard.
-  - Record results for later analysis.
-- View results on a metrics dashboard showing:
-  - Vote credits
-  - Skipped slots
-  - Block production success rate
-  - CPU and RAM usage
-  - Disk input/output operations
-  - Network throughput
-- Receive an optimisation report that includes:
-  - The best configuration for their hardware
-  - Expected performance gains
-  - Any cost-saving recommendations
+## Technology
+- **Frontend**: ReactJS (single-page application)
+- **Backend**: Node.js for config generation, RPC test orchestration, and security controls
+- **Hosting**: Low-cost cloud host (~£25/month excluding domain)
 
 ---
 
-## Key Features
-- Automated deployment using Infrastructure-as-Code for repeatable setups.
-- Integrated observability to monitor performance metrics.
-- Automated benchmarking engine to test different configurations.
-- Data-driven recommendations for validator operators.
+## Security & Scalability
+- Input validation and rate limiting
+- No handling of private keys
+- SSRF protection for outbound requests
+- Easily scalable to meet demand
 
 ---
 
-## Outcome
-The Validator Performance Autotuner will enable Solana node operators to:
-- Maximise rewards by optimising block production and voting performance.
-- Reduce infrastructure costs while maintaining performance.
-- Gain deeper insight into how configuration choices affect validator efficiency.
+## Roadmap
+**MVP**
+- Config Advisor rules engine
+- RPC Doctor bounded tests
+- Result export (JSON/PDF)
+- Save/load profiles and reports
+
+**Future**
+- Side-by-side comparisons
+- Shareable public report links
+- Optional user accounts
+- Regional test runners
+
+---
+
+## Evaluation
+- Unit tests for config generation
+- Reliability and performance checks
+- Usability testing with typical validator setups
+
+
