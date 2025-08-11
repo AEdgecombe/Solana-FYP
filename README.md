@@ -1,4 +1,4 @@
-# Solana Config Advisor & RPC Doctor (Hosted)
+# Solana Config Advisor & RPC Doctor 
 
 A hosted ReactJS web application on a custom domain that helps Solana validator operators and developers:
 
